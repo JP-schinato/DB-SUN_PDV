@@ -77,3 +77,47 @@ INSERT INTO pagamento (ID_Pagamento, Forma_Pagamento) VALUES
 -- Visualizando dados da tabela pagamento --
 
 SELECT * FROM pagamento
+
+--	Estrutura para a tabela produtos --
+
+CREATE TABLE produtos (
+	ID_Produto INT PRIMARY KEY IDENTITY(1,1),
+	Nome VARCHAR(40) NOT NULL,
+	Cod_Barras VARCHAR(35) NOT NULL,
+	Preco DECIMAL(10,2) NOT NULL -- Preço em BRL
+)
+
+-- Despejando dados na tabela produto --
+
+INSERT INTO produtos (Nome, Cod_Barras, Preco) VALUES
+('cafe', '789738277382', 50),
+('feijao', '4545155454', 60.98),
+('leite', '54646464', 1),
+('leite', '20', 45),
+('bolacha', '656565654', 49.9),
+('cetoprofeno', '7891317001926', 1.99);
+
+-- Visualizando dados da tabela produtos --
+
+SELECT * FROM produtos
+
+-- Estrutura da tabela user_sistema --
+
+CREATE TABLE user_sistema (
+	ID_User SMALLINT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	ID_Cargo INT DEFAULT NULL,
+	ID_Login SMALLINT DEFAULT NULL,
+	ID_Venda INT DEFAULT NULL,
+	ID_Produto INT DEFAULT NULL
+)
+
+-- Despejando dados da tabela user_sistema --
+
+INSERT INTO user_sistema (ID_Cargo, ID_Login, ID_Venda, ID_Produto) VALUES
+(1 , 1, NULL, NULL),
+(2 , 2, NULL, NULL),
+(3 , 3, NULL, NULL)
+
+-- Visualizando dados da tabela user_sistema ==
+
+SELECT * FROM user_sistema
