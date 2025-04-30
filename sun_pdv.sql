@@ -83,9 +83,10 @@ SELECT * FROM pagamento
 CREATE TABLE produtos (
 	ID_Produto INT PRIMARY KEY IDENTITY(1,1),
 	Nome VARCHAR(40) NOT NULL,
-	Cod_Barras VARCHAR(35) NOT NULL,
+	Cod_Barras VARCHAR(35) UNIQUE NOT NULL,
 	Preco DECIMAL(10,2) NOT NULL -- Preço em BRL
 )
+
 
 -- Despejando dados na tabela produto --
 
@@ -121,3 +122,28 @@ INSERT INTO user_sistema (ID_Cargo, ID_Login, ID_Venda, ID_Produto) VALUES
 -- Visualizando dados da tabela user_sistema ==
 
 SELECT * FROM user_sistema
+
+-- Estrutura da tabela vendas --
+
+CREATE TABLE vendas (
+	ID_Vendas INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	Subtotal DECIMAL(10,2) NOT NULL, -- Subtotal de Venda em BRL --
+	ID_Pagamento INT DEFAULT NULL,
+	Total DECIMAL(10,2) NOT NULL,
+	Data_Venda DATE DEFAULT NULL,
+	ID_Carrinho INT DEFAULT NULL
+
+)
+
+--  Restrições para tabelas desejadas
+
+
+-- Restrições para a tabela carrinho --
+
+ALTER TABLE carrinho
+	ADD CONSTRAINT FK_tabela_carrinho_produtos_CodBarras
+	FOREIGN KEY (CodBarras) REFERENCES produtos (Cod_Barras)
+
+ALTER TABLE carrinho
+	ADD CONSTRAINT FK_tabela_carrinho_produtos_ID 
+	FOREIGN KEY (ID_Produto) REFERENCES produtos (ID_Produto)
