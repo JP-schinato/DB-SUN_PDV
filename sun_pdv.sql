@@ -108,8 +108,8 @@ CREATE TABLE user_sistema (
 	ID_User SMALLINT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	ID_Cargo INT DEFAULT NULL,
 	ID_Login SMALLINT DEFAULT NULL,
-	ID_Venda INT DEFAULT NULL,
-	ID_Produto INT DEFAULT NULL
+	ID_Produto INT DEFAULT NULL,
+	ID_ListaVendas INT DEFAULT NULL
 )
 
 -- Despejando dados da tabela user_sistema --
@@ -131,8 +131,8 @@ CREATE TABLE vendas (
 	ID_Pagamento INT DEFAULT NULL,
 	Total DECIMAL(10,2) NOT NULL,
 	Data_Venda DATE DEFAULT NULL,
-	ID_Carrinho INT DEFAULT NULL
-
+	ID_Carrinho INT DEFAULT NULL,
+	ID_ListaVendas INT DEFAULT NULL
 )
 
 --  Restrições para tabelas desejadas
@@ -159,10 +159,6 @@ ALTER TABLE login_sistema
 ALTER TABLE user_sistema
 	ADD CONSTRAINT FK_user_e_login_sistema
 	FOREIGN KEY (ID_Login) REFERENCES login_sistema (ID_Login)
-
-ALTER TABLE user_sistema 
-	ADD CONSTRAINT FK_user_e_vendas 
-	FOREIGN KEY (ID_Venda) REFERENCES vendas (ID_Vendas)
 
 ALTER TABLE user_sistema 
 	ADD CONSTRAINT FK_user_e_produtos 
@@ -218,3 +214,22 @@ ALTER TABLE user_sistema
 ALTER TABLE login_sistema
 	ADD CONSTRAINT FK_Login_e_Permissao
 	FOREIGN KEY (ID_Permissao) REFERENCES permissao (ID_Permissao)
+
+----------------------------------------------------------
+-- Adicinonando lista de vendas relacionada a cada User --
+
+
+CREATE TABLE lista_vendas (
+	ID_ListaVenda INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	ID_Vendas INT DEFAULT NULL
+)
+
+-- Adicionando restrições entre user, vendas e lista de vendas --
+
+ALTER TABLE user_sistema
+	ADD CONSTRAINT FK_User_e_ListaVenda
+	FOREIGN KEY (ID_ListaVendas) REFERENCES lista_vendas (ID_ListaVenda)
+
+ALTER TABLE lista_vendas
+	ADD CONSTRAINT FK_Lista_e_Vendas
+	FOREIGN KEY (ID_Vendas) REFERENCES vendas (ID_Vendas)
