@@ -147,3 +147,34 @@ ALTER TABLE carrinho
 ALTER TABLE carrinho
 	ADD CONSTRAINT FK_tabela_carrinho_produtos_ID 
 	FOREIGN KEY (ID_Produto) REFERENCES produtos (ID_Produto)
+
+-- Restrições para a tabela login sistema --
+
+ALTER TABLE login_sistema
+	ADD CONSTRAINT FK_Login_e_Cargo
+	FOREIGN KEY (ID_Cargo) REFERENCES cargo (ID_Cargo)
+
+-- Restrições para a tabela user sistema --
+
+ALTER TABLE user_sistema
+	ADD CONSTRAINT FK_user_e_login_sistema
+	FOREIGN KEY (ID_Login) REFERENCES login_sistema (ID_Login)
+
+ALTER TABLE user_sistema 
+	ADD CONSTRAINT FK_user_e_vendas 
+	FOREIGN KEY (ID_Venda) REFERENCES vendas (ID_Vendas)
+
+ALTER TABLE user_sistema 
+	ADD CONSTRAINT FK_user_e_produtos 
+	FOREIGN KEY (ID_Produto) REFERENCES produtos (ID_Produto)
+
+-- Restrições da tabela vendas --
+
+ALTER TABLE vendas
+	ADD CONSTRAINT FK_vendas_e_carrinho 
+	FOREIGN KEY (ID_Carrinho) REFERENCES carrinho (ID_Carrinho)
+
+ALTER TABLE vendas
+	ADD CONSTRAINT FK_vendas_e_pagamento
+	FOREIGN KEY (ID_Pagamento) REFERENCES pagamento (ID_Pagamento)
+
