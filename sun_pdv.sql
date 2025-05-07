@@ -44,7 +44,7 @@ CREATE TABLE login_sistema (
 	Nome VARCHAR(35) DEFAULT NULL,
 	Email VARCHAR(100) DEFAULT NULL,
 	Senha VARCHAR(20) NOT NULL,
-	ID_Cargo INT DEFAULT NULL
+	ID_Cargo INT DEFAULT NULL,
 )
 
 -- Despejando dados testes para a tabela login_sistema --
@@ -178,3 +178,43 @@ ALTER TABLE vendas
 	ADD CONSTRAINT FK_vendas_e_pagamento
 	FOREIGN KEY (ID_Pagamento) REFERENCES pagamento (ID_Pagamento)
 
+
+---------------------
+-- Correções no DB --
+---------------------
+
+-- Criando uma nova coluna para a permissão na tabela de login e user --
+
+ALTER TABLE login_sistema
+	ADD ID_Permissao INT DEFAULT NULL
+
+ALTER TABLE user_sistema
+	ADD ID_Permissao INT DEFAULT NULL
+
+
+--  Criando a tabela permissão juntamente com as FK --
+
+CREATE TABLE permissao (
+	ID_Permissao INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	permissao TEXT
+)
+
+-- Despejando dados na tabela permissão --
+
+
+INSERT INTO permissao (permissao)
+VALUES ('Aceito'), ('Negado')
+
+-- Visualizando dados da tabela permissão --
+
+SELECT * FROM permissao
+
+-- Adicionando novas restrições em relação com a tabela permissão em user e login --
+
+ALTER TABLE user_sistema
+	ADD CONSTRAINT FK_User_e_Permissao
+	FOREIGN KEY (ID_Permissao) REFERENCES permissao (ID_Permissao)
+
+ALTER TABLE login_sistema
+	ADD CONSTRAINT FK_Login_e_Permissao
+	FOREIGN KEY (ID_Permissao) REFERENCES permissao (ID_Permissao)
