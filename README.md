@@ -5,10 +5,11 @@ Aqui irei trabalhar no DB do meu TCC relacionado a um PDV.
 
 A Base de Dados foi criada com o intuito de estar atendendo todo o sistema juntamente com o site tendo uma lógica para proporcionar o Cadastro e criação de novos usuários pelo site e fazer o login pelo próprio sistema, onde trabalha com registros de vendas, usuários e produtos.
 
+O banco de dados ele é relacional e em nuvem sendo assim uma maneira segura e melhor.
+
 Ferramentas usadas:
 
-SQLserver
-Azure DataStudio
+SQLserver | Azure DataStudio | Azure
 
 Lógica:
 
@@ -80,3 +81,6 @@ A lógica consiste em 7 tabelas sendo elas:
         Total: valor total da venda idependente se foi pago de duas formas.
         Data: Define a data da venda.
         Carrinho: Busca a lista de produtos registrados na venda.
+
+    Tabela Lista_vendas:
+    Tendo em si duas colunas, onde serão armazenados todo o conjunto de vendas que cada usuario efetuou dentro do sistema, mantendo assim uma maneira segura de estar tendo acesso e controle cada venda que um funcionário executa dentro do sistema.
