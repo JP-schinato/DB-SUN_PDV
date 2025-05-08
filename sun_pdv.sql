@@ -4,11 +4,11 @@
 
 -- Criando banco de dados --
 
-CREATE DATABASE SUN_PDV;
+CREATE DATABASE SUN_PDVcloud;
 
 -- usando o DB --
 
-USE SUN_PDV;
+USE SUN_PDVcloud;
 
 -- Criando a tabela cargos --
 
@@ -128,7 +128,7 @@ SELECT * FROM user_sistema
 CREATE TABLE vendas (
 	ID_Vendas INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	Subtotal DECIMAL(10,2) NOT NULL, -- Subtotal de Venda em BRL --
-	ID_Pagamento INT DEFAULT NULL,
+	ID_Pagamento SMALLINT DEFAULT NULL,
 	Total DECIMAL(10,2) NOT NULL,
 	Data_Venda DATE DEFAULT NULL,
 	ID_Carrinho INT DEFAULT NULL,
@@ -173,7 +173,6 @@ ALTER TABLE vendas
 ALTER TABLE vendas
 	ADD CONSTRAINT FK_vendas_e_pagamento
 	FOREIGN KEY (ID_Pagamento) REFERENCES pagamento (ID_Pagamento)
-
 
 ---------------------
 -- Correções no DB --
