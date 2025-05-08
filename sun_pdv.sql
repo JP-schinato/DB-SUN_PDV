@@ -164,6 +164,10 @@ ALTER TABLE user_sistema
 	ADD CONSTRAINT FK_user_e_produtos 
 	FOREIGN KEY (ID_Produto) REFERENCES produtos (ID_Produto)
 
+ALTER TABLE user_sistema 
+	ADD CONSTRAINT FK_user_e_cargo
+	FOREIGN KEY (ID_Cargo) REFERENCES cargo (ID_Cargo)
+
 -- Restrições da tabela vendas --
 
 ALTER TABLE vendas
