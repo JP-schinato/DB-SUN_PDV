@@ -42,27 +42,27 @@ Pix
 Voucher
 
 
-Tabela Permissão:
-Tendo em si duas colunas, onde serão armazenados os dados referentes as permissões do usuário para estar tendo acesso ao sistema.
+    Tabela Permissão:
+    Tendo em si duas colunas, onde serão armazenados os dados referentes as permissões do usuário para estar tendo acesso ao sistema.
 
 Sendo as Permissões:
 
 Aceito
 Negado
 
-Tabela produtos:
-Tendo em si quatro colunas, onde serão armazenados os registros de produtos para serem registrados no carrinho e somar o valor de uma venda.
+    Tabela produtos:
+    Tendo em si quatro colunas, onde serão armazenados os registros de produtos para serem registrados no carrinho e somar o valor de uma venda.
 
-    Nessa tabela poderemos estar definindo:
+Nessa tabela poderemos estar definindo:
 
 Nome do produto
 Código de Barras do produto
 Preço do produto
 
-Tabela User_Sistema:
-Tendo em si seis colunas, onde cada coluna está sendo usada como relacionamento buscando dados, cargos e permissões.
+    Tabela User_Sistema:
+    Tendo em si seis colunas, onde cada coluna está sendo usada como relacionamento buscando dados, cargos e permissões.
 
-    Dados buscados pelo relacionamento de colunas:
+Dados buscados pelo relacionamento de colunas:
 
 Cargo do usuário
 Login do usuário
@@ -70,10 +70,10 @@ Vendas do usuário
 Produtos do usuário
 Permissões do usuário
 
-Tabela Vendas:
-Tendo em si seis tabelas, onde serão armazenados os dados de cada venda.
+    Tabela Vendas:
+    Tendo em si seis tabelas, onde serão armazenados os dados de cada venda.
 
-    Dados armazenados na venda:
+Dados armazenados na venda:
 
 Subtotal das vendas: como primeiro valor se caso o cliente venha a desejar estar efetuandoa compra com dois meios de pagamento.
 Pagamento: define a forma de pagamento ultilizado na venda.
