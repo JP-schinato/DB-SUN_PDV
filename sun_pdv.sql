@@ -114,7 +114,7 @@ CREATE TABLE user_sistema (
 
 -- Despejando dados da tabela user_sistema --
 
-INSERT INTO user_sistema (ID_Cargo, ID_Login, ID_Venda, ID_Produto) VALUES
+INSERT INTO user_sistema (ID_Cargo, ID_Login, ID_ListaVendas) VALUES
 (1 , 1, NULL, NULL),
 (2 , 2, NULL, NULL),
 (3 , 3, NULL, NULL)
