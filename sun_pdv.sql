@@ -45,14 +45,16 @@ CREATE TABLE login_sistema (
 	Email VARCHAR(100) DEFAULT NULL,
 	Senha VARCHAR(20) NOT NULL,
 	ID_Cargo INT DEFAULT NULL,
+	ID_ListaVendas INT DEFAULT NULL
 )
 
 -- Despejando dados testes para a tabela login_sistema --
 
-INSERT INTO login_sistema(Nome, Email, Senha, ID_Cargo) VALUES 
-('João Mendes', 'jpmendes@gmail.com', '1234', 1),
-('João Schinato', 'jpschinato@gmail.com', '1234', 2),
-('Toshi', 'toshi@gmail.com', '1234', 3);
+
+INSERT INTO login_sistema(Nome, Email, Senha, ID_Cargo, ID_ListaVendas) VALUES 
+('João Mendes', 'jpmendes@gmail.com', '1234', 1, NULL),
+('João Schinato', 'jpschinato@gmail.com', '1234', 2, NULL),
+('Toshi', 'toshi@gmail.com', '1234', 3, NULL);
 
 -- Visualizando os dados da tabela login_sistema --
 
@@ -102,27 +104,6 @@ INSERT INTO produtos (Nome, Cod_Barras, Preco) VALUES
 
 SELECT * FROM produtos
 
--- Estrutura da tabela user_sistema --
-
-CREATE TABLE user_sistema (
-	ID_User SMALLINT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	ID_Cargo INT DEFAULT NULL,
-	ID_Login SMALLINT DEFAULT NULL,
-	ID_Produto INT DEFAULT NULL,
-	ID_ListaVendas INT DEFAULT NULL
-)
-
--- Despejando dados da tabela user_sistema --
-
-INSERT INTO user_sistema (ID_Cargo, ID_Login, ID_ListaVendas) VALUES
-(1 , 1, NULL, NULL),
-(2 , 2, NULL, NULL),
-(3 , 3, NULL, NULL)
-
--- Visualizando dados da tabela user_sistema ==
-
-SELECT * FROM user_sistema
-
 -- Estrutura da tabela vendas --
 
 CREATE TABLE vendas (
@@ -154,19 +135,13 @@ ALTER TABLE login_sistema
 	ADD CONSTRAINT FK_Login_e_Cargo
 	FOREIGN KEY (ID_Cargo) REFERENCES cargo (ID_Cargo)
 
--- Restrições para a tabela user sistema --
+ALTER TABLE login_sistema
+	ADD CONSTRAINT FK_Login_e_ListaVendas
+	FOREIGN KEY (ID_ListaVendas) REFERENCES lista_vendas (ID_ListaVenda)
 
-ALTER TABLE user_sistema
-	ADD CONSTRAINT FK_user_e_login_sistema
-	FOREIGN KEY (ID_Login) REFERENCES login_sistema (ID_Login)
-
-ALTER TABLE user_sistema 
-	ADD CONSTRAINT FK_user_e_produtos 
-	FOREIGN KEY (ID_Produto) REFERENCES produtos (ID_Produto)
-
-ALTER TABLE user_sistema 
-	ADD CONSTRAINT FK_user_e_cargo
-	FOREIGN KEY (ID_Cargo) REFERENCES cargo (ID_Cargo)
+ALTER TABLE login_sistema
+	ADD CONSTRAINT FK_Login_e_Permissao
+	FOREIGN KEY (ID_Permissao) REFERENCES lista_vendas (ID_Permissao)
 
 -- Restrições da tabela vendas --
 
