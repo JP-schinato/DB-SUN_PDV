@@ -60,17 +60,6 @@ A lógica consiste em 7 tabelas sendo elas:
         Código de Barras do produto
         Preço do produto
 
-    Tabela User_Sistema:
-    Tendo em si seis colunas, onde cada coluna está sendo usada como relacionamento buscando dados, cargos e permissões.
-
-    Dados buscados pelo relacionamento de colunas:
-
-        Cargo do usuário
-        Login do usuário
-        Vendas do usuário
-        Produtos do usuário
-        Permissões do usuário
-
     Tabela Vendas:
     Tendo em si seis tabelas, onde serão armazenados os dados de cada venda.
 
