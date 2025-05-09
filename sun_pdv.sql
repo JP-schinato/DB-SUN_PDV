@@ -236,3 +236,8 @@ ALTER TABLE user_sistema
 ALTER TABLE lista_vendas
 	ADD CONSTRAINT FK_Lista_e_Vendas
 	FOREIGN KEY (ID_Vendas) REFERENCES vendas (ID_Vendas)
+
+
+
+
+SELECT * FROM permissao
