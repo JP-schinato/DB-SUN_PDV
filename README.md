@@ -76,5 +76,4 @@ A lógica consiste em 7 tabelas sendo elas:
 
 
 
-<img src="https://raw.githubusercontent.com/jpschinato/DB-TCC-SUN_PDV/main/Diagrama/chart.svg" width="600"/>
-
+<img src="/home/jpschinato/System/Documentos/DBtcc/Diagrama/chart.svg" width="600"/>
