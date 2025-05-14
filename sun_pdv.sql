@@ -14,7 +14,7 @@ USE SUN_PDVcloud;
 
 CREATE TABLE cargo (
 	ID_Cargo INT PRIMARY KEY IDENTITY(1,1),
-	Cargo TEXT DEFAULT NULL
+	Cargo VARCHAR(30) DEFAULT NULL
 	)
 
 -- Despejando dados na tabela de cargos --
@@ -64,7 +64,7 @@ SELECT * FROM login_sistema
 
 CREATE TABLE pagamento (
 	ID_Pagamento SMALLINT PRIMARY KEY NOT NULL,
-	Forma_Pagamento TEXT DEFAULT NULL
+	Forma_Pagamento VARCHAR(30) DEFAULT NULL
 )
 
 -- Despejando os dados das formas de pagamento na tabela pagamento --
@@ -170,7 +170,7 @@ ALTER TABLE user_sistema
 
 CREATE TABLE permissao (
 	ID_Permissao INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	permissao TEXT
+	permissao VARCHAR(30)
 )
 
 -- Despejando dados na tabela permissão --
