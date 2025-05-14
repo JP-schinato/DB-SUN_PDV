@@ -75,6 +75,6 @@ A lógica consiste em 7 tabelas sendo elas:
     Tendo em si duas colunas, onde serão armazenados todo o conjunto de vendas que cada usuario efetuou dentro do sistema, mantendo assim uma maneira segura de estar tendo acesso e controle cada venda que um funcionário executa dentro do sistema.
 
 
-<img src="https://github.com/JP-schinato/DB-TCC-SUN_PDV/raw/main/Diagrama/chart.svg" alt="Diagrama" width="600"/>
+<img src="https://github.com/JP-schinato/DB-TCC-SUN_PDV/raw/main/Diagrama/chart.svg" alt="Diagrama" width="500"/>
 
 
