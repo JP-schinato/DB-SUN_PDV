@@ -21,9 +21,9 @@ A lógica consiste em 7 tabelas sendo elas:
     
     Sendo eles os cargos:
     
-        ADM: Podendo fazer de tudo dentro do sitema podendo até gerenciar os usuários.
-        MOD: Podendo fazer cadastro de produtos e vendas mas não tem permissão de gerenciar os usuários.
-        FUN: Podendo fazer somente vendas dentro do sistema.
+        Administrador: Podendo fazer de tudo dentro do sitema podendo até gerenciar os usuários.
+        Moderador: Podendo fazer cadastro de produtos e vendas mas não tem permissão de gerenciar os usuários.
+        Funcionario: Podendo fazer somente vendas dentro do sistema.
 
     Tabela Carrinho:
     Tendo em si quatro colunas onde seram armazenadas a soma de todos os produtos presentes na venda e dizer o valor do SubTotal em BRL.
