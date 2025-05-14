@@ -20,9 +20,9 @@ CREATE TABLE cargo (
 -- Despejando dados na tabela de cargos --
 	
 INSERT cargo (Cargo) VALUES
-('CargoADM'),
-('CargoMOD'),
-('CargoFUN')
+('Administrador'),
+('Moderador'),
+('Funcionario')
 
 -- Verificando valores --
 
