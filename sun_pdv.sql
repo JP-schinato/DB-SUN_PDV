@@ -43,7 +43,7 @@ CREATE TABLE login_sistema (
 	ID_Login SMALLINT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	Nome VARCHAR(35) DEFAULT NULL,
 	Email VARCHAR(100) DEFAULT NULL,
-	Senha VARCHAR(20) NOT NULL,
+	Senha VARCHAR(100) NOT NULL,
 	ID_Cargo INT DEFAULT NULL,
 	ID_ListaVendas INT DEFAULT NULL
 )
@@ -162,10 +162,6 @@ ALTER TABLE vendas
 ALTER TABLE login_sistema
 	ADD ID_Permissao INT DEFAULT NULL
 
-ALTER TABLE user_sistema
-	ADD ID_Permissao INT DEFAULT NULL
-
-
 --  Criando a tabela permissão juntamente com as FK --
 
 CREATE TABLE permissao (
@@ -185,10 +181,6 @@ SELECT * FROM permissao
 
 -- Adicionando novas restrições em relação com a tabela permissão em user e login --
 
-ALTER TABLE user_sistema
-	ADD CONSTRAINT FK_User_e_Permissao
-	FOREIGN KEY (ID_Permissao) REFERENCES permissao (ID_Permissao)
-
 ALTER TABLE login_sistema
 	ADD CONSTRAINT FK_Login_e_Permissao
 	FOREIGN KEY (ID_Permissao) REFERENCES permissao (ID_Permissao)
@@ -204,15 +196,10 @@ CREATE TABLE lista_vendas (
 
 -- Adicionando restrições entre user, vendas e lista de vendas --
 
-ALTER TABLE user_sistema
+ALTER TABLE login_sistema
 	ADD CONSTRAINT FK_User_e_ListaVenda
 	FOREIGN KEY (ID_ListaVendas) REFERENCES lista_vendas (ID_ListaVenda)
 
 ALTER TABLE lista_vendas
 	ADD CONSTRAINT FK_Lista_e_Vendas
 	FOREIGN KEY (ID_Vendas) REFERENCES vendas (ID_Vendas)
-
-
-
-
-SELECT * FROM permissao
