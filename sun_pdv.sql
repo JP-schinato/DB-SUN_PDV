@@ -4,11 +4,11 @@
 
 -- Criando banco de dados --
 
-CREATE DATABASE SUN_PDVcloud;
+CREATE DATABASE SUN_PDVlocal;
 
 -- usando o DB --
 
-USE SUN_PDVcloud;
+USE SUN_PDVlocal;
 
 -- Criando a tabela cargos --
 
@@ -48,13 +48,6 @@ CREATE TABLE login_sistema (
 	ID_ListaVendas INT DEFAULT NULL
 )
 
--- Despejando dados testes para a tabela login_sistema --
-
-
-INSERT INTO login_sistema(Nome, Email, Senha, ID_Cargo, ID_ListaVendas) VALUES 
-('João Mendes', 'jpmendes@gmail.com', '1234', 1, NULL),
-('João Schinato', 'jpschinato@gmail.com', '1234', 2, NULL),
-('Toshi', 'toshi@gmail.com', '1234', 3, NULL);
 
 -- Visualizando os dados da tabela login_sistema --
 
@@ -135,14 +128,6 @@ ALTER TABLE login_sistema
 	ADD CONSTRAINT FK_Login_e_Cargo
 	FOREIGN KEY (ID_Cargo) REFERENCES cargo (ID_Cargo)
 
-ALTER TABLE login_sistema
-	ADD CONSTRAINT FK_Login_e_ListaVendas
-	FOREIGN KEY (ID_ListaVendas) REFERENCES lista_vendas (ID_ListaVenda)
-
-ALTER TABLE login_sistema
-	ADD CONSTRAINT FK_Login_e_Permissao
-	FOREIGN KEY (ID_Permissao) REFERENCES lista_vendas (ID_Permissao)
-
 -- Restrições da tabela vendas --
 
 ALTER TABLE vendas
@@ -171,7 +156,6 @@ CREATE TABLE permissao (
 
 -- Despejando dados na tabela permissão --
 
-
 INSERT INTO permissao (permissao)
 VALUES ('Aceito'), ('Negado')
 
@@ -197,7 +181,7 @@ CREATE TABLE lista_vendas (
 -- Adicionando restrições entre user, vendas e lista de vendas --
 
 ALTER TABLE login_sistema
-	ADD CONSTRAINT FK_User_e_ListaVenda
+	ADD CONSTRAINT FK_Login_e_ListaVenda
 	FOREIGN KEY (ID_ListaVendas) REFERENCES lista_vendas (ID_ListaVenda)
 
 ALTER TABLE lista_vendas
