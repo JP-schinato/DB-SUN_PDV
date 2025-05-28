@@ -45,7 +45,9 @@ CREATE TABLE login_sistema (
 	Email VARCHAR(100) DEFAULT NULL,
 	Senha VARCHAR(100) NOT NULL,
 	ID_Cargo INT DEFAULT NULL,
-	ID_ListaVendas INT DEFAULT NULL
+	ID_ListaVendas INT DEFAULT NULL,
+	ID_Vendas INT DEFAULT NULL,
+	ID_Permissao INT DEFAULT NULL
 )
 
 
@@ -106,7 +108,7 @@ CREATE TABLE vendas (
 	Total DECIMAL(10,2) NOT NULL,
 	Data_Venda DATE DEFAULT NULL,
 	ID_Carrinho INT DEFAULT NULL,
-	ID_ListaVendas INT DEFAULT NULL
+	ID_Login SMALLINT DEFAULT NULL
 )
 
 --  Restrições para tabelas desejadas
@@ -128,6 +130,10 @@ ALTER TABLE login_sistema
 	ADD CONSTRAINT FK_Login_e_Cargo
 	FOREIGN KEY (ID_Cargo) REFERENCES cargo (ID_Cargo)
 
+ALTER TABLE login_sistema
+	ADD CONSTRAINT FK_Login_Vendas
+	FOREIGN KEY (ID_Vendas) REFERENCES vendas (ID_Vendas)
+
 -- Restrições da tabela vendas --
 
 ALTER TABLE vendas
@@ -141,11 +147,6 @@ ALTER TABLE vendas
 ---------------------
 -- Correções no DB --
 ---------------------
-
--- Criando uma nova coluna para a permissão na tabela de login e user --
-
-ALTER TABLE login_sistema
-	ADD ID_Permissao INT DEFAULT NULL
 
 --  Criando a tabela permissão juntamente com as FK --
 
@@ -168,22 +169,3 @@ SELECT * FROM permissao
 ALTER TABLE login_sistema
 	ADD CONSTRAINT FK_Login_e_Permissao
 	FOREIGN KEY (ID_Permissao) REFERENCES permissao (ID_Permissao)
-
-----------------------------------------------------------
--- Adicinonando lista de vendas relacionada a cada User --
-
-
-CREATE TABLE lista_vendas (
-	ID_ListaVenda INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	ID_Vendas INT DEFAULT NULL
-)
-
--- Adicionando restrições entre user, vendas e lista de vendas --
-
-ALTER TABLE login_sistema
-	ADD CONSTRAINT FK_Login_e_ListaVenda
-	FOREIGN KEY (ID_ListaVendas) REFERENCES lista_vendas (ID_ListaVenda)
-
-ALTER TABLE lista_vendas
-	ADD CONSTRAINT FK_Lista_e_Vendas
-	FOREIGN KEY (ID_Vendas) REFERENCES vendas (ID_Vendas)
