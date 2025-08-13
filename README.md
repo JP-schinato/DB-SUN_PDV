@@ -61,7 +61,7 @@ A lógica consiste em 7 tabelas sendo elas:
         Preço do produto
 
     Tabela Vendas:
-    Tendo em si seis tabelas, onde serão armazenados os dados de cada venda.
+    Tendo em si oito colunas, onde serão armazenados os dados de cada venda.
 
     Dados armazenados na venda:
 
@@ -70,6 +70,10 @@ A lógica consiste em 7 tabelas sendo elas:
         Total: valor total da venda idependente se foi pago de duas formas.
         Data: Define a data da venda.
         Carrinho: Busca a lista de produtos registrados na venda.
+        ID_Cliente: para buscar o cpf, cnpj ou rg do cliente.
+
+    Tabela de clientes:
+    Tendo em si quatro colunas, onde serão armazenados o CPF, CNPJ e RG de cada cliente.
 
 <p align="center">
   <img src="https://github.com/JP-schinato/DB-TCC-SUN_PDV/raw/main/Diagrama/schema2.png" width="600" />
