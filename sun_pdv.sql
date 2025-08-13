@@ -169,3 +169,18 @@ SELECT * FROM permissao
 ALTER TABLE login_sistema
 	ADD CONSTRAINT FK_Login_e_Permissao
 	FOREIGN KEY (ID_Permissao) REFERENCES permissao (ID_Permissao)
+
+-- Adicionando a tela de clientes --
+
+CREATE TABLE clientes (
+	ID_Clientes INT PRIMARY KEY NOT NULL,
+	cpf VARCHAR(20),
+	cnpj VARCHAR(20),
+	rg VARCHAR(20)
+)
+
+-- Adicionando restrições da tabela de clientes com vendas --
+
+ALTER TABLE vendas
+	ADD CONSTRAINT FK_clientes_e_vendas
+	FOREIGN KEY (ID_Clientes) REFERENCES clientes (ID_Clientes)
