@@ -32,7 +32,7 @@ A lógica consiste em 7 tabelas sendo elas:
     Tendo em si seis colunas onde seram armazenados os cadastros de usuarios feitos pelo site e direcionados para o sistema definindo seu cargo e inicialmente a sua permissão aceita no sistema.
 
     Tabela Pagamento:
-    Tendo em si duas colunas onde seram armazenados os dados referente aos meios de pagamento, para poder estar definindo qual o meio de pagamento usado em cada venda do sistema.
+    Tendo em si três colunas onde seram armazenados os dados referente aos meios de pagamento, para poder estar definindo qual o meio de pagamento usado em cada venda do sistema.
 
     Sendo as formas de pagamento:
 
@@ -61,7 +61,7 @@ A lógica consiste em 7 tabelas sendo elas:
         Preço do produto
 
     Tabela Vendas:
-    Tendo em si oito colunas, onde serão armazenados os dados de cada venda.
+    Tendo em si nove colunas, onde serão armazenados os dados de cada venda.
 
     Dados armazenados na venda:
 
