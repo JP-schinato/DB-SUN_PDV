@@ -59,7 +59,8 @@ SELECT * FROM login_sistema
 
 CREATE TABLE pagamento (
 	ID_Pagamento SMALLINT PRIMARY KEY NOT NULL,
-	Forma_Pagamento VARCHAR(30) DEFAULT NULL
+	Forma_Pagamento VARCHAR(30) DEFAULT NULL,
+	Taxa DECIMAL(5,2) DEFAULT 0.0
 )
 
 -- Despejando os dados das formas de pagamento na tabela pagamento --
@@ -102,13 +103,13 @@ SELECT * FROM produtos
 -- Estrutura da tabela vendas --
 
 CREATE TABLE vendas (
-	ID_Vendas INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	Subtotal DECIMAL(10,2) NOT NULL, -- Subtotal de Venda em BRL --
-	ID_Pagamento SMALLINT DEFAULT NULL,
-	Total DECIMAL(10,2) NOT NULL,
-	Data_Venda DATE DEFAULT NULL,
-	ID_Carrinho INT DEFAULT NULL,
-	ID_Login SMALLINT DEFAULT NULL
+    ID_Vendas INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+    Subtotal DECIMAL(10,2) NOT NULL, -- Subtotal de Venda em BRL --
+    ID_Pagamento SMALLINT DEFAULT NULpa,
+    Total DECIMAL(10,2) NOT NULL,
+    Data_Venda DATETIME DEFAULT GETDATE(), -- Agora armazena data E hora
+    ID_Carrinho INT DEFAULT NULL,
+    ID_Login SMALLINT DEFAULT NULL
 )
 
 --  Restrições para tabelas desejadas
