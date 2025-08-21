@@ -57,15 +57,15 @@ SELECT * FROM login_sistema
 
 -- Estrutura da tabela pagamento --
 
-CREATE TABLE pagamento (
-	ID_Pagamento SMALLINT PRIMARY KEY NOT NULL,
+CREATE TABLE forma_pagamento (
+	ID_Forma_Pagamento SMALLINT PRIMARY KEY NOT NULL,
 	Forma_Pagamento VARCHAR(30) DEFAULT NULL,
-	Taxa DECIMAL(5,2) DEFAULT 0.0
+	Taxa DECIMAL(5,2) DEFAULT NULL
 )
 
 -- Despejando os dados das formas de pagamento na tabela pagamento --
 
-INSERT INTO pagamento (ID_Pagamento, Forma_Pagamento) VALUES 
+INSERT INTO forma_pagamento (ID_Forma_Pagamento, Forma_Pagamento) VALUES 
 (1, 'Dinheiro'),
 (2, 'Débito'),
 (3, 'Crédito'),
@@ -74,7 +74,7 @@ INSERT INTO pagamento (ID_Pagamento, Forma_Pagamento) VALUES
 
 -- Visualizando dados da tabela pagamento --
 
-SELECT * FROM pagamento
+SELECT * FROM forma_pagamento
 
 --	Estrutura para a tabela produtos --
 
@@ -105,11 +105,18 @@ SELECT * FROM produtos
 CREATE TABLE vendas (
     ID_Vendas INT PRIMARY KEY NOT NULL IDENTITY(1,1),
     Subtotal DECIMAL(10,2) NOT NULL, -- Subtotal de Venda em BRL --
-    ID_Pagamento SMALLINT DEFAULT NULpa,
+	ID_Pagamentos INT DEFAULT NULL,
     Total DECIMAL(10,2) NOT NULL,
     Data_Venda DATETIME DEFAULT GETDATE(), -- Agora armazena data E hora
     ID_Carrinho INT DEFAULT NULL,
+	ID_Clientes INT DEFAULT NULL,
     ID_Login SMALLINT DEFAULT NULL
+)
+
+CREATE TABLE pagamentos (
+	ID_Pagamentos INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	Qtd_Pagamentos INT DEFAULT NULL,
+	ID_Forma_Pagamento SMALLINT DEFAULT NULL,
 )
 
 --  Restrições para tabelas desejadas
@@ -143,7 +150,13 @@ ALTER TABLE vendas
 
 ALTER TABLE vendas
 	ADD CONSTRAINT FK_vendas_e_pagamento
-	FOREIGN KEY (ID_Pagamento) REFERENCES pagamento (ID_Pagamento)
+	FOREIGN KEY (ID_Pagamentos) REFERENCES pagamentos (ID_Pagamentos)
+
+-- Restrições da tabela de pagamentos com a de pagamento
+
+ALTER TABLE pagamentos 
+	ADD CONSTRAINT FK_pagamento_e_forma_pagamento
+	FOREIGN KEY (ID_Forma_Pagamento) REFERENCES forma_pagamento (ID_Forma_Pagamento)
 
 ---------------------
 -- Correções no DB --
