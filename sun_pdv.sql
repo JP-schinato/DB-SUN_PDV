@@ -28,15 +28,6 @@ INSERT cargo (Cargo) VALUES
 
 SELECT * FROM cargo
 
--- Criando a tabela carrinho --
-
-CREATE TABLE carrinho (
-	ID_Carrinho INT PRIMARY KEY IDENTITY(1,1),
-	ID_Produto INT NOT NULL,
-	CodBarras VARCHAR(35) DEFAULT NULL,
-	SubTotal DECIMAL(10, 2) DEFAULT NULL  -- 10 dígitos no total, 2 depois da vígula / Preço em BRL --
-);
-
 -- Estrutura da tabela login_sistema --
 
 CREATE TABLE login_sistema (
@@ -49,7 +40,6 @@ CREATE TABLE login_sistema (
 	ID_Vendas INT DEFAULT NULL,
 	ID_Permissao INT DEFAULT NULL
 )
-
 
 -- Visualizando os dados da tabela login_sistema --
 
@@ -117,20 +107,10 @@ CREATE TABLE pagamentos (
 	ID_Pagamentos INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	Qtd_Pagamentos INT DEFAULT NULL,
 	ID_Forma_Pagamento SMALLINT DEFAULT NULL,
+	Troco DECIMAL(10,2) NOT NULL,
 )
 
 --  Restrições para tabelas desejadas
-
-
--- Restrições para a tabela carrinho --
-
-ALTER TABLE carrinho
-	ADD CONSTRAINT FK_tabela_carrinho_produtos_CodBarras
-	FOREIGN KEY (CodBarras) REFERENCES produtos (Cod_Barras)
-
-ALTER TABLE carrinho
-	ADD CONSTRAINT FK_tabela_carrinho_produtos_ID 
-	FOREIGN KEY (ID_Produto) REFERENCES produtos (ID_Produto)
 
 -- Restrições para a tabela login sistema --
 
@@ -143,10 +123,6 @@ ALTER TABLE login_sistema
 	FOREIGN KEY (ID_Vendas) REFERENCES vendas (ID_Vendas)
 
 -- Restrições da tabela vendas --
-
-ALTER TABLE vendas
-	ADD CONSTRAINT FK_vendas_e_carrinho 
-	FOREIGN KEY (ID_Carrinho) REFERENCES carrinho (ID_Carrinho)
 
 ALTER TABLE vendas
 	ADD CONSTRAINT FK_vendas_e_pagamento
@@ -198,3 +174,44 @@ CREATE TABLE clientes (
 ALTER TABLE vendas
 	ADD CONSTRAINT FK_clientes_e_vendas
 	FOREIGN KEY (ID_Clientes) REFERENCES clientes (ID_Clientes)
+
+
+	SELECT * FROM login_sistema
+
+
+
+USE SUN_PDVlocal;
+
+ -- Adicionar Data_Criacao à tabela carrinho
+CREATE TABLE carrinho (
+	ID_Carrinho INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	Data_Criacao DATETIME
+)
+
+-- Criar tabela carrinho_itens
+CREATE TABLE carrinho_itens (
+    ID_Carrinho_itens INT PRIMARY KEY IDENTITY(1,1),
+    ID_Carrinho INT NOT NULL,
+    ID_Produto INT NOT NULL,
+    Quantidade INT NOT NULL,
+    PrecoUnitario DECIMAL(10,2) NOT NULL,
+    CONSTRAINT FK_carrinho_itens_carrinho FOREIGN KEY (ID_Carrinho) REFERENCES carrinho(ID_Carrinho),
+    CONSTRAINT FK_carrinho_itens_produtos FOREIGN KEY (ID_Produto) REFERENCES produtos(ID_Produto)
+);
+
+-- Adicionar Valor_Recebido à tabela pagamentos
+ALTER TABLE pagamentos
+ADD Valor_Recebido DECIMAL(10,2);
+
+-- (Opcional) Remover Qtd_Pagamentos se não for necessário
+ALTER TABLE pagamentos
+DROP COLUMN Qtd_Pagamentos;
+
+-- Ajustar tabela vendas para remover Documento e Tipo_Documento (se não forem necessários)
+-- Como FinalizarVenda usa ID_Clientes, não é necessário adicionar Documento e Tipo_Documento
+-- Caso queira manter Documento e Tipo_Documento, adicione:
+ALTER TABLE vendas
+ADD Documento VARCHAR(20), Tipo_Documento VARCHAR(10);
+
+
+	
