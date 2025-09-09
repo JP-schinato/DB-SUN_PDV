@@ -240,7 +240,7 @@ AND Data_Criacao < DATEADD(DAY, -30, GETDATE());
 ## Schema do DB
 
 <p align="center">
-  <img src="https://github.com/JP-schinato/DB-TCC-SUN_PDV/raw/main/Diagrama/schema2.png" width="600" />
+  <img src="https://github.com/JP-schinato/DB-TCC-SUN_PDV/raw/main/Diagrama/schema.png" width="600" />
 </p>
 
 ## 📄 Licença
