@@ -48,7 +48,7 @@ INSERT INTO forma_pagamento (ID_Forma_Pagamento, Forma_Pagamento) VALUES
 CREATE TABLE produtos (
     ID_Produto INT PRIMARY KEY IDENTITY(1,1),
     Nome VARCHAR(55) NOT NULL,
-    Cod_Barras VARCHAR(35) UNIQUE NOT NULL,
+    Cod_Barras VARCHAR(35) NOT NULL,
     Preco DECIMAL(10,2) NOT NULL CHECK (Preco >= 0),
     Ativo BIT DEFAULT 1, -- Para controle de produtos ativos/inativos
     Data_Cadastro DATETIME DEFAULT GETDATE()
@@ -173,3 +173,8 @@ WHERE ID_Pagamentos IS NOT NULL;
 -- 3. Atualizar nomes das formas de pagamento
 UPDATE forma_pagamento SET Forma_Pagamento = 'Cartão de Débito' WHERE Forma_Pagamento = 'Débito';
 UPDATE forma_pagamento SET Forma_Pagamento = 'Cartão de Crédito' WHERE Forma_Pagamento = 'Crédito';
+
+ALTER TABLE produtos
+ADD Ativo BIT DEFAULT 1 NOT NULL;
+
+SELECT * FROM cargo
