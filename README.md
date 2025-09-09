@@ -237,15 +237,7 @@ AND Data_Criacao < DATEADD(DAY, -30, GETDATE());
 - *Índices*: Considere adicionar índices em colunas frequentemente consultadas
 - *Validações*: O sistema possui validações básicas, mas considere implementar validações adicionais na aplicação
 
-## 🤝 Contribuição
-
-Para contribuir com melhorias:
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua funcionalidade (git checkout -b feature/nova-funcionalidade)
-3. Faça commit das mudanças (git commit -am 'Adiciona nova funcionalidade')
-4. Faça push para a branch (git push origin feature/nova-funcionalidade)
-5. Abra um Pull Request
+## Schema do DB
 
 <p align="center">
   <img src="https://github.com/JP-schinato/DB-TCC-SUN_PDV/raw/main/Diagrama/schema2.png" width="600" />
