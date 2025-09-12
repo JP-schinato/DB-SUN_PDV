@@ -1,5 +1,5 @@
 -- Banco de dados do PDV versão SQLserver --
--- SUN PDV - VERSÃO CORRIGIDA --
+-- SUN PDV --
 
 -- Criando banco de dados --
 CREATE DATABASE SUN_PDVlocal;
@@ -178,3 +178,5 @@ ALTER TABLE produtos
 ADD Ativo BIT DEFAULT 1 NOT NULL;
 
 SELECT * FROM cargo
+
+ALTER LOGIN sa WITH PASSWORD = 'SUNserver!';
